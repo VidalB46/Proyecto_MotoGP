@@ -1,5 +1,8 @@
--- Trigger 1:
--- Crear una tabla auxiliar para el log de cambios de equipo
+-- Trigger 1: RegistrarCambioEquipo. Este trigger se activará después de insertar 
+-- una nueva relación en la tabla Pilotos_Equipos. Su propósito será registrar un 
+-- log de los cambios de equipo de los pilotos en una tabla auxiliar, para 
+-- mantener un historial de los movimientos de los pilotos entre equipos.
+
 create table Log_Cambios_Equipo (
     id_log INT AUTO_INCREMENT primary key,
     id_piloto INT,
@@ -29,11 +32,9 @@ values (1, 1, '2012-01-01');
 
 select * from Log_Cambios_Equipo where id_piloto = 1;
 
--- Trigger 2: 
--- EvitarPatrociniosDuplicados
---  Descripción: Este trigger se activará antes de insertar un nuevo patrocinio en la tabla Patrocinios. 
--- Su propósito será evitar que se inserten patrocinios duplicados para el mismo equipo y patrocinador 
--- en el mismo año.
+-- Trigger 2: EvitarPatrociniosDuplicados. Su propósito será evitar que se 
+-- inserten patrocinios duplicados para el mismo equipo y patrocinador en el mismo 
+-- año
 
 delimiter &&
 
@@ -55,7 +56,7 @@ end &&
 
 delimiter ;
 
--- Verificar el estado inicial de Patrocinios
+
 SELECT * FROM Patrocinios WHERE id_equipo = 1 AND YEAR(fecha_inicio) = 2012;
 
 

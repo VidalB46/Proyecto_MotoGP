@@ -1,4 +1,9 @@
--- Vista 1.
+-- Vista 1. Podios por año y categoría. Esta vista mostrará los pilotos con más
+-- podios (posiciones 1, 2 o 3) por año y categoría (Moto3, Moto2, MotoGP). 
+-- Incluirá el año, la categoría, el nombre del piloto, el nombre del equipo y el 
+-- número de podios, ordenado por año, categoría y número de podios descendente. 
+-- Solo se mostrarán los pilotos con al menos 3 podios en un año y categoría 
+-- específicos.
 
 create view Vista_Podios_Por_Año as
 select YEAR(ca.fecha) as año, e.categoria, p.nombre as nombre_piloto, e.nombre_equipo, COUNT(*) as numero_podios
@@ -17,7 +22,8 @@ order by año, e.categoria asc, numero_podios desc;
    
    select * from Vista_Podios_Por_Año;
     
-   -- Vista 2.
+-- Vista 2.Puntos por piloto y año. Muestra el total de puntos acumulados por 
+-- cada piloto por año, incluyendo la categoría del equipo.
    
 create view Vista_Puntos_Por_Piloto_Y_Año as
 select YEAR(ca.fecha) as año, e.categoria, p.nombre as nombre_piloto, e.nombre_equipo, SUM(r.puntos_obtenidos) as total_puntos

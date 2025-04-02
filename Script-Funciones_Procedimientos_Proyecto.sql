@@ -1,5 +1,6 @@
 
--- Funcion 1:
+-- Funcion 1: NumeroCarrerasGanadasEnAño. Esta función calculará el número de 
+-- carreras que un piloto ha ganado (posición 1) en un año específico.
 
 delimiter &&
 
@@ -25,8 +26,8 @@ delimiter ;
 
 select NumeroCarrerasGanadasEnAño(6, 2018) as victorias;
 
--- Nueva Función 2: NumeroPodiosEnAño
--- Descripción: Calcula el número total de podios (posiciones 1, 2 o 3) que un piloto ha conseguido en un año específico..
+-- NumeroPodiosEnAño. Calcula el número total de podios que un piloto ha 
+-- conseguido en un año específico.
 
 delimiter &&
 
@@ -55,9 +56,9 @@ delimiter ;
 select NumeroPodiosEnAño(1, 2012) as podios;
 
 
--- Procedimiento 1: ResultadosCarrerasPilotoEnAño
--- Descripción: Este procedimiento mostrará un reporte de todas las carreras en las que un piloto participó en un año específico, 
--- incluyendo la fecha de la carrera, el nombre del circuito, la posición final y los puntos obtenidos
+-- Procedimiento 1: ResultadosCarrerasPilotoEnAño. Mostrará todas las carreras en 
+-- las que un piloto participó en un año específico, incluyendo fecha de la 
+-- carrera, nombre del circuito, posición final y puntos obtenidos.
 
 delimiter &&
 
@@ -75,7 +76,8 @@ delimiter ;
 
 CALL ResultadosCarrerasPilotoEnAño(1, 2012);
 
--- Procedimiento 2: InsertarResultadoCarrera
+-- Procedimiento 2: InsertarResultadoCarrera. Este procedimiento nos sirve para 
+-- introducir un nuevo registro en la tabla Resultado_Carrera.
 
 delimiter &&
 
@@ -92,7 +94,9 @@ CALL InsertarResultadoCarrera(1, '2012-04-08', 1, 1, 25);
 select * from Resultados_Carreras where id_piloto = 1 and fecha = '2012-04-08';
 
 
--- Procedimiento 3: 
+-- Procedimiento 3: CompararPilotosEnAño. Este procedimiento comparará el 
+-- rendimiento de dos pilotos en un año específico, mostrando el nombre de cada 
+-- piloto, el número de victorias y el número de podios de cada uno.
 
 delimiter &&
 
